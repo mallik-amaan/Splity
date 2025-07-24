@@ -1,4 +1,4 @@
-package com.codinfinity.splity.features.home.widgets
+package com.codinfinity.splity.features.dashboard.widgets
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

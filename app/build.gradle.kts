@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.serialization)
 }
 
 android {
@@ -16,7 +19,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
+
+        }
 
     buildTypes {
         release {
@@ -49,6 +53,10 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.material.icons.extended)
+    implementation(libs.androidx.navigation.compose)
+    // In build.gradle
+    implementation(libs.androidx.navigation.compose.v277) // or latest
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -56,4 +64,23 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.coil.compose)
+
+    //Dagger Hilt Dependencies
+    implementation(libs.hilt.android)
+    implementation (libs.androidx.hilt.navigation.compose) // ✅ Required for hiltViewModel()
+    ksp(libs.hilt.compiler)
+
+    //Retrofit Dependencies
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+
+    //Supabase Dependencies
+    implementation(libs.postgrest.kt)
+    implementation (libs.storage.kt)
+    implementation(libs.supabase.auth.kt)
+    implementation (libs.ktor.client.android)
+    implementation (libs.ktor.client.core)
+    implementation (libs.ktor.utils)
 }
