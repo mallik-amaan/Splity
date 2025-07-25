@@ -24,7 +24,10 @@ object SupabaseModule {
     @Singleton
     fun provideSupabaseClient(): SupabaseClient {
         return createSupabaseClient(
-           ) {
+            supabaseUrl = "https://xboadslpszoecbextkzc.supabase.co",
+            supabaseKey = "sb_publishable_iPpEXdJ_xUUNEKphZvSO4A_cxElqqHb",
+
+            ) {
             install(Postgrest)
             install(Auth) {
                 flowType = FlowType.PKCE
