@@ -83,4 +83,15 @@ dependencies {
     implementation (libs.ktor.client.android)
     implementation (libs.ktor.client.core)
     implementation (libs.ktor.utils)
+    implementation(libs.supabase.functions.kt)
+
+    //coil dependencies
+    implementation(libs.coil.compose.v250)
+
+
+    //secure datastore preferences
+    implementation (libs.androidx.security.crypto)
+    implementation (libs.androidx.datastore.preferences)
+    implementation(libs.kotlinx.serialization.json)
+
 }

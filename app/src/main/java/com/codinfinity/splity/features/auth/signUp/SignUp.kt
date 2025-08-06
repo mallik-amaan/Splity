@@ -44,7 +44,7 @@ fun SignUpScreen(
                 modifier = Modifier.fillMaxWidth()
                     .padding(16.dp),
                 textAlign = TextAlign.Center,
-                text = "Login")
+                text = "Sign Up")
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth()
                     .padding(16.dp),
@@ -71,9 +71,10 @@ fun SignUpScreen(
             else
                 PrimaryButton(
                     onClick = {
-                        viewModel.OnSignIn(
+                        viewModel.onSignIn(
                             onComplete = {
-                                navController.navigate(Screen.HomeScreen.route){}
+                                navController.navigate(Screen.EmailSentScreen.route){
+                                }
                             }
                         )
                     },

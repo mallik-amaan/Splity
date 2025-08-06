@@ -3,13 +3,17 @@ agp = "8.9.3"
 authKt = "1.0.0"
 authKtVersion = "3.2.2"
 coilCompose = "2.6.0"
+coilComposeVersion = "2.5.0"
 converterGson = "2.12.0"
+datastorePreferences = "1.1.7"
+functionsKt = "3.2.2"
 hiltAndroid = "2.55"
 hiltNavigationCompose = "1.2.0"
 coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
+kotlinxSerializationJson = "1.9.0"
 ktorClientAndroid = "3.2.1"
 ktorClientCore = "3.2.1"
 ktorUtils = "3.2.1"
@@ -24,17 +28,23 @@ kotlin = "2.2.0"
 ksp = "2.2.0-2.0.2"
 postgrestKt = "1.0.0"
 retrofit = "2.12.0"
+securityCrypto = "1.1.0"
 storageKt = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-compose-v277 = { module = "androidx.navigation:navigation-compose", version.ref = "navigationComposeVersion" }
+androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "securityCrypto" }
 auth-kt = { module = "io.github.jan-tennert.supabase:gotrue-kt", version.ref = "authKt" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
+coil-compose-v250 = { module = "io.coil-kt:coil-compose", version.ref = "coilComposeVersion" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+supabase-functions-kt = { module = "io.github.jan-tennert.supabase:functions-kt", version.ref = "authKtVersion" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

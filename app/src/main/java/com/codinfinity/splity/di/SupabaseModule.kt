@@ -9,6 +9,8 @@ import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.auth.FlowType
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.createSupabaseClient
+import io.github.jan.supabase.functions.Functions
+import io.github.jan.supabase.functions.functions
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.storage.Storage
@@ -24,15 +26,18 @@ object SupabaseModule {
     @Singleton
     fun provideSupabaseClient(): SupabaseClient {
         return createSupabaseClient(
-            supabaseUrl = "https://xboadslpszoecbextkzc.supabase.co",
-            supabaseKey = "sb_publishable_iPpEXdJ_xUUNEKphZvSO4A_cxElqqHb",
+            supabaseUrl = "YOUR_SUPABASE_URL",
+            supabaseKey = "YOUR_SUPABASE_KEY",
 
             ) {
             install(Postgrest)
+            install(Functions){
+
+            }
             install(Auth) {
                 flowType = FlowType.PKCE
-                scheme = "app"
-                host = "supabase.com"
+                scheme = "splity"
+                host = "auth-callback"
             }
             install(Storage)
         }
@@ -55,6 +60,12 @@ object SupabaseModule {
     @Singleton
     fun provideSupabaseStorage(client: SupabaseClient): Storage {
         return client.storage
+    }
+
+    @Provides
+    @Singleton
+    fun provideSupabaseFunctions(client: SupabaseClient): Functions {
+        return client.functions
     }
 
 }

@@ -9,9 +9,4 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class AppModule{
 
-//    abstract fun bindSplityRepository(
-//        splityRepositoryImpl: SplityRepositoryImpl
-//    ): SplityRepository
-
-
 }

@@ -15,6 +15,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.codinfinity.splity.features.customKeyboard.widgets.CustomKeyboard
 import com.codinfinity.splity.features.split.viewmodels.SplitViewModel
@@ -26,7 +27,7 @@ import com.codinfinity.splity.features.split.widgets.SplitDetailsCard
 fun SplitScreen(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: SplitViewModel
+    viewModel: SplitViewModel = hiltViewModel()
     ) {
     var amount by remember { mutableStateOf("") }
 
@@ -41,15 +42,9 @@ fun SplitScreen(
             SplitAmountCard(
                 amount = amount,
                 onSplitClick = {
-//                    viewModel.setSplitData(
-//                        SplitData(
-//                            amount = amount.toDouble(),
-//                            description = "Description",
-//                            date = LocalDateTime.now().toString(),
-//                            category = "Food",
-//                            splitWith = listOf("Amaan","Ali")
-//                        )
-//                    )
+                    viewModel.OnSplitClicked(
+                        onComplete = {}
+                    )
                 }
             )
             CustomKeyboard { amount = it }

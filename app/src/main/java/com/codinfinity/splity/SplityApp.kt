@@ -10,10 +10,11 @@ import com.codinfinity.splity.features.navigation.AppNavGraph
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun SplityApp(
+    modifier: Modifier
 ) {
     val navController = rememberNavController()
     AppNavGraph(
         navController = navController,
-        modifier = Modifier,
+        modifier = modifier,
     )
 }

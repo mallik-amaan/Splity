@@ -44,6 +44,7 @@ fun HomeScreen(
                 route = Screen.ProfileScreen.route,
             ){
                 ProfileScreen(
+                    topLevelController = navController,
                     navController = bottomNavController,
                     modifier = modifier.padding(innerPadding)
                 )
@@ -52,6 +53,7 @@ fun HomeScreen(
                 route = Screen.DashboardScreen.route,
             ){
                 DashboardScreen(
+                    topLevelController = navController,
                     navController = bottomNavController,
                     modifier = modifier.padding(innerPadding)
                 )

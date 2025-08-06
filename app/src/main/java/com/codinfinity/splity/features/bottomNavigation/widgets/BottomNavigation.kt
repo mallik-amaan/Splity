@@ -2,6 +2,7 @@ package com.codinfinity.splity.features.bottomNavigation.widgets
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AutoGraph
+import androidx.compose.material.icons.rounded.Groups
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.BottomAppBar
@@ -33,6 +34,11 @@ fun BottomNavigationBar(modifier: Modifier = Modifier, navController: NavControl
             title = "Profile",
             icon = Icons.Rounded.Person,
             route = Screen.ProfileScreen.route
+        ),
+        BottomNavigationDataItem(
+            title = "Friends",
+            icon = Icons.Rounded.Groups,
+            route = Screen.FriendScreen.route
         )
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()

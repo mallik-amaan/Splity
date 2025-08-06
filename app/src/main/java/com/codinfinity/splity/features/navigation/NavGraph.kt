@@ -1,5 +1,7 @@
 package com.codinfinity.splity.features.navigation
 
+import BasicInfo
+import SplashScreen
 import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -8,21 +10,25 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navDeepLink
 import com.codinfinity.splity.HomeScreen
+import com.codinfinity.splity.features.addFriend.AddFriend
 import com.codinfinity.splity.features.auth.login.LoginScreen
+import com.codinfinity.splity.features.auth.signUp.EmailSentScreen
+import com.codinfinity.splity.features.auth.signUp.EmailVerificationScreen
+import com.codinfinity.splity.features.auth.signUp.RegistrationComplete
 import com.codinfinity.splity.features.auth.signUp.SignUpScreen
+
 import com.codinfinity.splity.features.split.screens.SplitScreen
-import com.codinfinity.splity.features.split.viewmodels.SplitViewModel
 
 @RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("ViewModelConstructorInComposable")
 @Composable
 fun AppNavGraph(navController: NavHostController,modifier:Modifier) {
-    val splitScreenViewModel = SplitViewModel()
 
     NavHost(
         navController = navController,
-        startDestination = Screen.LoginScreen.route
+        startDestination = Screen.SplashScreen.route
     ) {
         composable (route = Screen.HomeScreen.route) {
             HomeScreen(navController = navController, modifier = modifier)
@@ -43,7 +49,56 @@ fun AppNavGraph(navController: NavHostController,modifier:Modifier) {
             SplitScreen(
                 navController = navController,
                 modifier = modifier,
-                viewModel = splitScreenViewModel
+            )
+        }
+        composable(
+            route = Screen.AddFriendScreen.route
+        ) {
+            AddFriend(
+                modifier = modifier,
+            )
+        }
+
+        composable(route = Screen.BasicInfoScreen.route) {
+            BasicInfo(
+                modifier = modifier,
+                navController = navController
+            )
+        }
+        composable(route = Screen.RegistrationCompleteScreen.route) {
+            RegistrationComplete(
+                modifier = modifier,
+                navController = navController
+            )
+        }
+
+        composable(
+            route = Screen.EmailVerificationScreen.route,
+            deepLinks = listOf(
+                navDeepLink {
+                    uriPattern = "splity://auth-callback/{authToken}"
+                    action = "android.intent.action.VIEW"
+                }
+            )
+            ) {
+            backStackEntry ->
+            val authToken = backStackEntry.arguments?.getString("authToken")
+            EmailVerificationScreen(
+                modifier = modifier,
+                navController = navController
+            )
+        }
+
+        composable(route = Screen.EmailSentScreen.route) {
+            EmailSentScreen(
+                modifier = modifier,
+                navController = navController
+            )
+        }
+
+        composable(route = Screen.SplashScreen.route) {
+            SplashScreen(
+                navController = navController,
             )
         }
 

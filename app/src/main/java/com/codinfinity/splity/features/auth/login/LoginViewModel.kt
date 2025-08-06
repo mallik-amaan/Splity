@@ -2,6 +2,7 @@ package com.codinfinity.splity.features.auth.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.codinfinity.splity.di.UserSession
 import com.codinfinity.splity.domain.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -11,7 +12,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val authRepository:AuthRepository
+    private val authRepository:AuthRepository,
+    private val userSession: UserSession
 
 ):ViewModel(){
     private val _isLoading = MutableStateFlow(false)
@@ -43,7 +45,8 @@ class LoginViewModel @Inject constructor(
                     email = _email.value,
                     password = _password.value
                 )
-                _result.value = result
+                userSession.setUser(result!!)
+                _result.value=true
             } catch (e: Exception) {
                 _result.value = false // or handle error
             } finally {

@@ -21,7 +21,10 @@ import com.codinfinity.splity.features.dashboard.widgets.CardWidget
 import com.codinfinity.splity.ui.components.PrimaryButton
 
 @Composable
-fun DashboardScreen(modifier: Modifier = Modifier, navController: NavController) {
+fun DashboardScreen(
+    modifier: Modifier = Modifier,
+    navController: NavController,
+    topLevelController: NavController) {
     var amount by remember { mutableStateOf("") }
     Column(modifier = modifier.fillMaxSize(), verticalArrangement = Arrangement.Top) {
         CardWidget()
@@ -32,7 +35,9 @@ fun DashboardScreen(modifier: Modifier = Modifier, navController: NavController)
            horizontalArrangement = Arrangement.Absolute.SpaceEvenly
        ) {
            PrimaryButton(
-               onClick = {},
+               onClick = {
+                   topLevelController.navigate("split_screen")
+               },
                text = "Add Expense",
                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
            )
